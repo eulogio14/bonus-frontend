@@ -10,7 +10,6 @@ export const MyBookings = () => {
     useEffect(() => {
         console.log("👤 Usuario detectado en MyBookings:", auth?.user?.username);
 
-        // 2. Si el usuario aún no carga, detenemos la función y esperamos
         if (!auth?.user?.username) {
             console.log("⏳ Esperando a que cargue el perfil del usuario...");
             return; 
@@ -33,7 +32,6 @@ export const MyBookings = () => {
 
             try {
                 console.log("🚀 Iniciando peticiones al backend para los IDs:", saveIds);
-                // Aquí es donde se hacen las peticiones
                 const promises = saveIds.map(id => api.get(`/flights/book/${id}`));
                 const responses = await Promise.all(promises);
 
@@ -87,7 +85,6 @@ export const MyBookings = () => {
                                     <td className="px-6 py-4 whitespace-nowrap font-bold text-blue-600">
                                         #{booking.id}
                                     </td>
-                                    {/* Validaciones por si la estructura del JSON anida los datos */}
                                     <td className="px-6 py-4 whitespace-nowrap font-medium">
                                         {booking.flight?.flightNumber || booking.flightNumber || 'N/A'}
                                     </td>

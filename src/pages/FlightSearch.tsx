@@ -19,7 +19,6 @@ export const FlightSearch = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
-  // Agregamos el tipado <Flight[]> para que TypeScript no se queje en el map()
   const [flights, setFlights] = useState<Flight[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -163,7 +162,6 @@ export const FlightSearch = () => {
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {/* Botón de Reservar */}
                     <button 
                       onClick={() => handleBook(flight.id)}
                       disabled={flight.availableSeats === 0}
@@ -185,7 +183,6 @@ export const FlightSearch = () => {
         </div>
       )}
 
-      {/* Modal para ver Detalle de Reserva */}
       {bookingDetails && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full relative">
@@ -198,7 +195,6 @@ export const FlightSearch = () => {
             <h3 className="text-2xl font-bold mb-4 text-blue-900 text-center">Tu Ticket 🎫</h3>
             <div className="space-y-3 mb-6 bg-gray-50 p-4 rounded border border-gray-200">
               <p><strong>N° Reserva:</strong> {bookingDetails.id}</p>
-              {/* Ajusta "flight.flightNumber" si tu backend lo devuelve distinto */}
               <p><strong>Vuelo:</strong> {bookingDetails.flight?.flightNumber || 'N/A'}</p>
               <p><strong>Asiento Confirmado:</strong> ✅</p>
             </div>

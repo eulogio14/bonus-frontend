@@ -45,13 +45,10 @@ export const AuthProvider = ({children}: {children:ReactNode}) => {
             api.get('users/current')
                 .then(response => {
                     console.log("¡Usuario obtenido del backend!", response.data);
-              // Dependiendo de tu backend, podría ser response.data o response.data.user
               setUser(response.data);
                 })
                 .catch(err => {
                     console.error("Falló la obtención del usuario:", err.response?.status, err.response?.data);
-              // Comentamos el logout temporalmente para que no te patee mientras depuramos
-              // logout();
                 })
                 
         }
